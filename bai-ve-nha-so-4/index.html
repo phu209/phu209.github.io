@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+  <style>
+    * {
+      margin: 0;
+    }
+
+    .box {
+      display: flex;
+    }
+    
+    .red {
+      height: 400px;
+      background-color: red;
+      text-align: center;
+      line-height: 400px;
+      color: #fff;
+      flex: 2;
+    }
+
+    .box-1 {
+      flex: 1;
+    }
+
+    .green {
+      background-color: green;
+    }
+
+    .blue {
+      background-color: blue;
+    }
+
+    .text {
+      height: 200px;
+      text-align: center;
+      line-height: 200px;
+      color: #fff;
+    }
+
+    .a {
+      margin-right: 15px;
+    }
+
+    .b {
+      flex: 1;
+    }
+
+    .text-1 {
+      height: 400px;
+      text-align: center;
+      line-height: 400px;
+      color: #fff;
+    }
+
+  </style>
+<body>
+  BAI-1
+  <div class="box">
+    <div class="red">Height 400px</div>
+    <div class="box-1">
+      <div class="green text">Height 200px</div>
+      <div class="blue text">Height 200px</div>
+    </div>
+  </div>
+  BAI-2
+  <div class="box">
+    <div class="red a">Height 400px</div>
+    <div class="box-1 ">
+      <div class="green text">Height 200px</div>
+      <div class="blue text">Height 200px</div>
+    </div>
+  </div>
+  BAI-3
+  <div class="box">
+    <div class="red b">Height 400px</div>
+    <div class="green b text-1">Height 400px</div>
+    <div class="blue b text-1">Height 400px</div>
+  </div>
+  BAI-4
+  <div class="box">
+    <div class="red a b ">Height 400px</div>
+    <div class="green a b text-1 ">Height 400px</div>
+    <div class="blue b text-1 ">Height 400px</div>
+  </div>
+</body>
+</html>
