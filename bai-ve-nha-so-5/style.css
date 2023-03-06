@@ -135,12 +135,14 @@ body {
     align-items: center;
     min-height: 250px;
     border-bottom: 1px solid #ddd;
+    border-radius: 10px;
     overflow: hidden;
 }
 
 .product-img a img {
     display: block;
     width: 100%;
+    border-radius: 10px;
     transition: all 0.5s ease;
 }
 
