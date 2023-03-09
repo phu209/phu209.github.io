@@ -1,0 +1,284 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 14px;
+}
+
+
+.header-logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-shadow: 3px 3px 3px red ;
+    padding: 10px;
+    border-bottom: 1px solid #29324e;
+    text-align: center;
+}
+
+.header-logo a {
+    text-decoration: none;
+    color: #fff;
+}
+/* ------------------------------------- */
+
+
+/* ------------------------------------- */
+
+.main-menu {
+    position: absolute;
+    top: 0px;
+    left: 0;
+    z-index: 1;
+    background-color: #000;
+    height: 1420px;
+}
+
+.menu {
+
+}
+
+.menu li {
+    padding: 20px 80px 20px 20px ;
+    background-color: #000;
+    border-bottom: 1px solid #29324e;
+    cursor: pointer;
+    position: relative;
+    list-style-type: none;
+    transition: all 0.3s;
+}
+
+.menu li a {
+    font-size: 20px;
+    text-decoration: none;
+    color: #fff;
+}
+
+.sub-menu-list {
+    position: absolute;
+    left: 100%;
+    top: 0px;
+    display: none;
+    width: 260px
+}
+
+.sub-menu-list li  {
+    list-style-type: none;
+    transition: all 0.3s;
+}
+
+.sub-menu {
+    position: absolute;
+    left: 100%;
+    top: 0;
+    width: 17rem;
+    display: none;
+}
+
+.menu > li:hover,
+.sub-menu-list > li:hover,
+.sub-menu > li:hover {
+    background-color: #005ec4;
+    box-shadow: 0 0 15px rgb(0, 0, 0, 0.8);
+}
+
+.menu > li:hover > .sub-menu-list,
+.sub-menu-list > li:hover > .sub-menu
+{
+    display: block;
+}
+
+
+
+/* ------------------------------------- */
+#content {
+    margin-top: 30px;
+}
+
+#content .headline {
+    text-transform: uppercase;
+    text-align: center;
+    margin: 40px 0;
+    margin-left: 200px;
+}
+
+.headline h1 {
+    display: inline-block;
+    color: slategray;
+    font-size: 1.5rem;
+    padding: 12px 20px;
+    border: 1px solid #005ec4;
+    border-radius: 10px;
+}
+/* ------------------------------------- */
+
+.product-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 40px;
+    margin-left: 200px;
+
+}
+
+.product {
+    margin: 10px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    width: 30%
+}
+
+.product-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 250px;
+    border-bottom: 1px solid #ddd;
+    overflow: hidden;
+}
+
+.product-img a img {
+    display: block;
+    margin: auto;
+    width: 60%;
+    transition: all 0.5s ease;
+}
+
+.product:hover .product-img a img {
+    transform: scale(1.2);
+}
+
+.product-bottom {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.product-tittle {
+    padding: 10px;
+    margin-bottom: 8px;
+    height: 3rem;
+    overflow: hidden;
+}
+
+.product-link,
+.product-link-img {
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+    color: #000;
+}
+
+.product-rate {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.rate-text {
+    font-size: 14px;
+    margin-left: 10px;
+    font-weight: 600;
+    color: #a69f9f;
+}
+
+.product-price {
+    padding: 10px 12px 16px;
+}
+
+.product-price span {
+    font-size: 20px;
+    font-weight: 700;
+    color: tomato;
+}
+
+.add-cart {
+    background-color: tomato;
+    font-size: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+    border: 0;
+    padding: 4px 6px;
+    cursor: pointer;
+    position: absolute;
+    bottom: -40px;
+    left: 0;
+    right: 0;
+    transition: all 0.5s ease-in-out;
+}
+
+.product-link-1 {
+    color: #fff;
+    text-decoration: none;
+}
+
+.product:hover {
+    box-shadow: 0 0 15px rgb(0, 0, 0, 0.5);
+}
+
+.product:hover .product-bottom,
+.product:hover .product-link {
+    background-color: #000;
+    color: #fff;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.product:hover .add-cart{
+    bottom: 20px;
+    /* hoặc có thể dùng transform: translate(0px, -55px) */
+} 
+
+.btn-link {
+    position: fixed;
+    background-color: #ccc;
+    font-size: 20px;
+    font-weight: 700;
+    border: 0;
+    padding: 6px 6px;
+    cursor: pointer;
+    border-radius: 50%;
+    bottom: 100px;
+    right: 0;
+}
+
+.link-main {
+    color: #29324e;
+    text-decoration: none;
+}
+
+/* ------------------------------------- */
+
+#footer {
+    height: 100px;
+    background-color: #000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.store-info {
+    color: #fff;
+    font-size: 16px;
+    line-height: 1.6;
+    margin-left: 20px;
+}
+
+.social-icon {
+    margin-right: 30px;
+}
+
+.social-icon p {
+    color: #fff;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+.social-icon a {
+    margin: 10px;
+}
