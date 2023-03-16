@@ -50,9 +50,9 @@ body {
 .menu li {
     background-color: #000;
     border-bottom: 1px solid #29324e;
+    list-style-type: none;
     cursor: pointer;
     position: relative;
-    list-style-type: none;
     transition: all 0.4s;
 }
 
@@ -108,17 +108,18 @@ body {
 
 .menu a:hover i {
     display: block;
-} */
+}
 
-/* .menu a:hover > i{
-    color:crimson;
+.menu a:hover > i{
+    color:rgb(238, 255, 0);
 } */
 
 .nav-arrow-right {
     font-size: 1.5rem;
     position: absolute;
-    top: 18px;
-    right: 10px;
+    top: 50%;
+    left: 90%;
+    transform: translateY(-50%);
 }
 
 /* ------------------------------------- */
