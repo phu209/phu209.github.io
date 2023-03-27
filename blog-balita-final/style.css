@@ -293,7 +293,8 @@
 
 .form-message {
     width: 100%;
-    padding: 100px 10px;
+    height: 300px;
+    padding: 25px;
     margin: 16px 0;
     border: 1px solid #333;
 }
