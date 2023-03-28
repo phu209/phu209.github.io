@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="icon" href="./img/favicon.ico">
+    <link rel="stylesheet" href="./fontawesome-free-6.3.0/css/all.min.css">
+    <title>Blog | Contact</title>
+
+    <Style>
+        .nav li:nth-child(5) a {
+            opacity: 1;
+            color: black;
+            font-weight: 600;
+        }
+    </Style>
+</head>
+<body>
+    <div id="header">
+        <a href="index.html" class="logo"><h1>Balita</h1></a>
+        <div class="menu">
+           <ul class="nav">
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="#">TRAVEL
+                <i class="down fa-sharp fa-solid fa-caret-down"></i>
+            </a></li>
+            <li><a href="#">CATEGORIES
+                <i class="down fa-sharp fa-solid fa-caret-down"></i>
+            </a></li>
+            <li><a href="about.html">ABOUT</a></li>
+            <li><a href="contact.html">CONTACT</a></li>
+           </ul>
+        </div>
+    </div>
+
+    <div id="content">
+        <div class="contact-content">
+            <h2>Contact</h2>
+            <form action="">
+                <div class="row">
+                    <div class="col-third">
+                        <p>Name</p>
+                        <input type="text" name="" placeholder="" required class="form-control">
+                    </div>
+
+                    <div class="col-third">
+                        <p>Phone</p>
+                        <input type="text" name="" placeholder="" required class="form-control">
+                    </div>
+
+                    <div class="col-third">
+                        <p>Email</p>
+                        <input type="email" name="" placeholder="" required class="form-control">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-full">
+                        <p>Write Message</p>
+                        <textarea type="text" name="" placeholder="" required class="form-message"></textarea>
+                        <input class="form-submit-btn" type="submit" value="Send Message">
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="category-list">
+            <p>Categories</p>
+            <ul>
+                <li><a href="">Courses</a>
+                    <span class="quantity">(12)</span></li>
+                <li><a href="">News</a>
+                    <span class="quantity">(22)</span></li>
+                <li><a href="">Design</a>
+                    <span class="quantity">(37)</span></li>
+                <li><a href="">HTML</a>
+                    <span class="quantity">(42)</span></li>
+                <li><a href="">Web Development</a>
+                    <span class="quantity">(14)</span></li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="footer">
+        <p>Copyright 2023 All rights reseveed</p>
+    </div>
+</body>
+</html>
