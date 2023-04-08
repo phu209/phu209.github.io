@@ -7,7 +7,14 @@ public class Main {
         Scanner sc = new Scanner(System.in);
 
         System.out.println("Mời bạn nhập số lượng student muốn tạo: ");
-        int n = Integer.parseInt(sc.nextLine());
+        int n ;
+        do {
+            n = Integer.parseInt(sc.nextLine());
+            if (n<=0){
+                System.out.println("Số lượng student phải > 0. Mời nhập lại: ");
+            }
+        }while (n<=0);
+
         Student[] students = new Student[n];
         StudentHandle studentHandle = new StudentHandle();
 
