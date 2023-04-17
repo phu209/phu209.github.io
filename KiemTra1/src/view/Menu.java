@@ -24,7 +24,6 @@ public class Menu {
                 case 2:
                     userHandle.createUser(sc,users);
                     System.out.println("Đăng ký thành công!");
-                    System.out.println(users);
                     menuSelect(sc,users);
                     break;
                 case 0:
