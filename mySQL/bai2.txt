@@ -4,9 +4,9 @@ USE quanlysinhdiem;
 
 CREATE TABLE tbl_sinhvien(
 	id int PRIMARY KEY AUTO_INCREMENT,
-    ten varchar(255) NOT NULL,
-    gioiTinh int NOT NULL,
-    maLop int
+    	ten varchar(255) NOT NULL,
+    	gioiTinh int NOT NULL,
+    	maLop int
 );
 
 INSERT INTO tbl_sinhvien (ten,gioiTinh,maLop) VALUES ('Phùng Văn Phú',1,1),
@@ -15,9 +15,9 @@ INSERT INTO tbl_sinhvien (ten,gioiTinh,maLop) VALUES ('Phùng Văn Phú',1,1),
 ('Nguyễn Duy anh',1,1),('Dang Hue',2,0),('Vũ Tuấn Hải',3,1);
 
 CREATE TABLE tbl_giaovien(
-    id int PRIMARY KEY AUTO_INCREMENT,
-    ten varchar(255) NOT NULL,
-    gioiTinh int NOT NULL,
+    	id int PRIMARY KEY AUTO_INCREMENT,
+    	ten varchar(255) NOT NULL,
+    	gioiTinh int NOT NULL,
    	soNamKN int
 );
 
@@ -27,11 +27,11 @@ INSERT INTO tbl_giaovien (ten,gioiTinh,soNamKN) VALUES ('Trần Phong',1,5),
 ('Trịnh Minh C',1,9),('Đào Văn Đ',1,3),('Phạm Văn P',1,2);
 
 CREATE TABLE tbl_diem(
-    id int PRIMARY KEY AUTO_INCREMENT,
-    maSV int NOT NULL,
-    diemToan float,
-    diemHoa float,
-    diemLy float
+    	id int PRIMARY KEY AUTO_INCREMENT,
+    	maSV int NOT NULL,
+    	diemToan float,
+    	diemHoa float,
+	diemLy float
 );
 
 INSERT INTO tbl_diem (maSV,diemToan,diemHoa,diemLy) VALUES (1,8.2,9,7.5),
