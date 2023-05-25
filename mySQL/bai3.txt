@@ -1,0 +1,80 @@
+CREATE DATABASE quanlythuctap;
+
+USE quanlythuctap;
+
+CREATE TABLE tbl_khoa(
+    id int PRIMARY KEY AUTO_INCREMENT,
+    maKhoa varchar(255) NOT NULL,
+    tenKhoa varchar(255) NOT NULL,
+    sdt varchar(255) 
+);
+
+INSERT INTO tbl_khoa (maKhoa,tenKhoa,sdt) VALUES ('Geo','Dia ly',3855413),('Math','Toan hoc',3855411),('Bio','Cong nghe sinh hoc',3855412);
+
+CREATE TABLE tbl_giangvien(
+    id int PRIMARY KEY AUTO_INCREMENT,
+    maGV int NOT NULL,
+    tenGV varchar(255) NOT NULL,
+    luong int,
+    maKhoa varchar(255) NOT NULL
+);
+
+INSERT INTO tbl_giangvien (maGV,tenGV,luong,maKhoa) VALUES (11,'Thanh Binh',700,'Geo'),(12,'Thu Huong',500,'Math'),(13,'Chu Vinh',650,'Geo'),(14,'Le Thi Ly',500,'Bio'),(15,'Tran Son',900,'Math');
+
+CREATE TABLE tbl_sinhvien(
+    id int PRIMARY KEY AUTO_INCREMENT,
+    maSV int NOT NULL,
+    tenSV varchar(255) NOT NULL,
+    maKhoa varchar(255) NOT NULL,
+    namSinh int,
+    queQuan varchar(255)
+);
+
+INSERT INTO tbl_sinhvien (maSV,tenSV,maKhoa,namSinh,queQuan) VALUES (1,'Le Van Son','Bio',1990,'Nghe An'),(2,'Nguyen Thi Mai','Geo',1990,'Thanh Hoa'),(3,'Bui Xuan Duc','Math',1992,'Ha Noi'),(4,'Nguyen Van Tung','Bio',1989,'Ha Tinh'),(5,'Le Khanh Linh','Bio',1989,'Ha Nam'),(6,'Tran Khac Trong','Geo',1991,'Ninh Binh'),(7,'Le Hong Van','Math',1991,'Ha Noi'),(8,'Hoang Anh Duc','Bio',1992,'Nghe An');
+
+CREATE TABLE tbl_detai(
+    id int PRIMARY KEY AUTO_INCREMENT,
+    maDT varchar(255) NOT NULL,
+    tenDT varchar(255) NOT NULL,
+    kinhPhi int,
+    noiThucTap varchar(255)
+);
+
+INSERT INTO tbl_detai (maDT,tenDT,kinhPhi,noiThucTap) VALUES ('Dt01','GIS',100,'Nghe An'),('Dt02','ARC GIS',500,'Vinh Phuc'),('Dt03','Spatial DB',100,'Ha Tinh'),('Dt04','MAP',300,'Quang Binh');
+
+CREATE TABLE tbl_huongdan(
+    id int PRIMARY KEY AUTO_INCREMENT,
+    maSV int NOT NULL,
+    maDT varchar(255) NOT NULL,
+    maGV int NOT NULL,
+    ketQua float
+);
+
+INSERT INTO tbl_huongdan (maSV,maDT,maGV,ketQua) VALUES (1,'Dt01',13,8),(2,'Dt03',14,0),(3,'Dt03',12,10),(5,'Dt04',14,7),(6,'Dt01',13,null),(7,'Dt04',11,10),(8,'Dt03',15,6);
+
+
+1. Đưa ra thông tin gồm maGV, tenGV, tenKhoa của tất cả giảng viên
+2. Đưa ra thông tin gồm maGV, tenGV, tenKhoa của các giảng viên khoa 'Dia ly'
+3. Cho biết số sinh viên của khoa 'CNSH'
+4. Đưa ra danh sách gồm maSV, tenSV, namSinh của các sinh viên khoa 'Toan'
+5. Cho biết số giảng viên của khoa 'CNSH'
+6. Cho biết thông tin về sinh viên không tham gia thực tập
+7. Đưa ra maKhoa, tenKhoa, số giảng viên của mỗi khoa
+8. Cho biết sdt của khoa mà sinh viên tên Hoàng Văn Tùng đang theo học
+
+
+1. SELECT tbl_giangvien.maGV,tbl_giangvien.tenGV,tbl_khoa.tenKhoa FROM tbl_giangvien JOIN tbl_khoa ON tbl_giangvien.maKhoa = tbl_khoa.maKhoa;
+
+2. SELECT tbl_giangvien.maGV,tbl_giangvien.tenGV,tbl_khoa.tenKhoa FROM tbl_giangvien JOIN tbl_khoa ON tbl_giangvien.maKhoa = tbl_khoa.maKhoa WHERE tbl_khoa.tenKhoa = 'Dia ly';
+
+3. SELECT COUNT(*) AS soSinhVien FROM tbl_sinhvien JOIN tbl_khoa ON tbl_sinhvien.maKhoa = tbl_khoa.maKhoa WHERE tbl_khoa.tenKhoa = 'Cong nghe sinh hoc';
+
+4. SELECT tbl_sinhvien.maSV,tbl_sinhvien.tenSV,tbl_sinhvien.namSinh FROM tbl_sinhvien JOIN tbl_khoa ON tbl_sinhvien.maKhoa = tbl_khoa.maKhoa WHERE tbl_khoa.tenKhoa = 'Toan hoc';
+
+5. SELECT COUNT(*) AS soGiangVien FROM tbl_giangvien JOIN tbl_khoa ON tbl_giangvien.maKhoa = tbl_khoa.maKhoa WHERE tbl_khoa.tenKhoa = 'Cong nghe sinh hoc';
+
+6. SELECT * FROM tbl_sinhvien WHERE tbl_sinhvien.maSV NOT IN(SELECT tbl_huongdan.maSV FROM tbl_huongdan);
+
+7. SELECT tbl_khoa.maKhoa, tbl_khoa.tenKhoa, COUNT(*) AS soGiangVien FROM tbl_khoa JOIN tbl_giangvien ON tbl_khoa.maKhoa = tbl_giangvien.maKhoa GROUP BY tbl_khoa.maKhoa, tbl_khoa.tenKhoa;
+   
+8. SELECT tbl_Khoa.sdt FROM tbl_khoa JOIN tbl_sinhvien ON tbl_khoa.maKhoa = tbl_sinhvien.maKhoa WHERE tbl_sinhvien.tenSV = 'Hoàng Văn Tùng';
