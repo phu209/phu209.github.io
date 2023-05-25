@@ -77,4 +77,4 @@ INSERT INTO tbl_huongdan (maSV,maDT,maGV,ketQua) VALUES (1,'Dt01',13,8),(2,'Dt03
 
 7. SELECT tbl_khoa.maKhoa, tbl_khoa.tenKhoa, COUNT(*) AS soGiangVien FROM tbl_khoa JOIN tbl_giangvien ON tbl_khoa.maKhoa = tbl_giangvien.maKhoa GROUP BY tbl_khoa.maKhoa, tbl_khoa.tenKhoa;
    
-8. SELECT tbl_Khoa.sdt FROM tbl_khoa JOIN tbl_sinhvien ON tbl_khoa.maKhoa = tbl_sinhvien.maKhoa WHERE tbl_sinhvien.tenSV = 'Hoàng Văn Tùng';
+8. SELECT tbl_Khoa.sdt FROM tbl_khoa JOIN tbl_sinhvien ON tbl_khoa.maKhoa = tbl_sinhvien.maKhoa WHERE tbl_sinhvien.tenSV = 'Nguyễn Văn A';
