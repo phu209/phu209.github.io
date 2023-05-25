@@ -53,15 +53,6 @@ CREATE TABLE tbl_huongdan(
 INSERT INTO tbl_huongdan (maSV,maDT,maGV,ketQua) VALUES (1,'Dt01',13,8),(2,'Dt03',14,0),(3,'Dt03',12,10),(5,'Dt04',14,7),(6,'Dt01',13,null),(7,'Dt04',11,10),(8,'Dt03',15,6);
 
 
-1. Đưa ra thông tin gồm maGV, tenGV, tenKhoa của tất cả giảng viên
-2. Đưa ra thông tin gồm maGV, tenGV, tenKhoa của các giảng viên khoa 'Dia ly'
-3. Cho biết số sinh viên của khoa 'CNSH'
-4. Đưa ra danh sách gồm maSV, tenSV, namSinh của các sinh viên khoa 'Toan'
-5. Cho biết số giảng viên của khoa 'CNSH'
-6. Cho biết thông tin về sinh viên không tham gia thực tập
-7. Đưa ra maKhoa, tenKhoa, số giảng viên của mỗi khoa
-8. Cho biết sdt của khoa mà sinh viên tên Hoàng Văn Tùng đang theo học
-
 
 1. SELECT tbl_giangvien.maGV,tbl_giangvien.tenGV,tbl_khoa.tenKhoa FROM tbl_giangvien JOIN tbl_khoa ON tbl_giangvien.maKhoa = tbl_khoa.maKhoa;
 
