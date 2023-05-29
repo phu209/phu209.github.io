@@ -1,0 +1,56 @@
+1.Đưa ra thông tin gồm mã số, họ tên và tên khoa của tất cả các giảng viên.
+
+SELECT tbl_giangvien.id, tbl_giangvien.hoTenGV, tbl_khoa.tenKhoa 
+FROM tbl_giangvien JOIN tbl_khoa ON tbl_giangvien.maKhoa = tbl_khoa.id;
+
+2.Sử dụng lệnh xuất ra mã số, họ tên, tên khoa của các giảng viên hướng dẫn từ 3 sinh viên trở lên.
+
+SELECT tbl_giangvien.id, tbl_giangvien.hoTenGV, tbl_khoa.tenKhoa FROM tbl_giangvien 
+JOIN tbl_khoa ON tbl_giangvien.maKhoa = tbl_khoa.id
+JOIN tbl_huongdan ON tbl_giangvien.id = tbl_huongdan.maGV
+JOIN tbl_sinhvien ON tbl_huongdan.maSV = tbl_sinhvien.id 
+GROUP BY tbl_giangvien.id, tbl_giangvien.hoTenGV, tbl_khoa.tenKhoa
+HAVING COUNT(tbl_sinhvien.id) >=3;
+
+3. Sử dụng lệnh SQL để xuất ra thông tin về những sinh viên chưa có điểm thực tập.
+
+SELECT tbl_sinhvien.* 
+FROM tbl_sinhvien JOIN tbl_huongdan ON tbl_sinhvien.id = tbl_huongdan.maSV 
+WHERE tbl_huongdan.ketQua IS NULL;
+
+4.Thực hiện lệnh SQL xuất ra số điện thoại của khoa mà sinh viên có tên ‘Le van son’ đang theo học.
+
+SELECT tbl_khoa.dienThoai 
+FROM tbl_khoa JOIN tbl_sinhvien ON tbl_khoa.id = tbl_sinhvien.maKhoa 
+WHERE tbl_sinhvien.hotenSV = 'Le Van Son';
+
+5.Sử dụng lệnh truy vấn SQL lấy ra mã số và tên các đề tài có nhiều hơn 2 sinh viên tham gia thực tập.
+
+SELECT tbl_detai.id, tbl_detai.tenDT 
+FROM tbl_detai JOIN tbl_huongdan ON tbl_detai.id = tbl_huongdan.maDT 
+GROUP BY tbl_detai.id, tbl_detai.tenDT HAVING COUNT(*) > 2;
+
+6.Sử dụng câu lệnh truy vấn SQL lấy ra mã số, tên đề tài của đề tài có kinh phí cao nhất.
+
+SELECT tbl_detai.id, tbl_detai.tenDT 
+FROM tbl_detai 
+WHERE tbl_detai.kinhPhi = (SELECT MAX(tbl_detai.kinhPhi) FROM tbl_detai);
+
+7.Sử dụng câu lệnh SQL xuất ra Tên khoa, Số lượng sinh viên của mỗi khoa.
+
+SELECT tbl_khoa.tenKhoa, COUNT(*) AS soSinhVien 
+FROM tbl_khoa JOIN tbl_sinhvien ON tbl_khoa.id = tbl_sinhvien.maKhoa 
+GROUP BY tbl_khoa.tenKhoa;
+
+8.Sử dụng truy vấn SQL xuất ra mã số, họ tên và điểm của các sinh viên khoa ‘DIALY và QLTN’.
+
+SELECT tbl_sinhvien.id, tbl_sinhvien.hotenSV, tbl_huongdan.ketQua FROM tbl_sinhvien 
+JOIN tbl_khoa ON tbl_sinhvien.maKhoa = tbl_khoa.id
+JOIN tbl_huongdan ON tbl_sinhvien.id = tbl_huongdan.maSV
+WHERE tbl_khoa.tenKhoa = 'Dia ly va QLTN';
+
+9.Sử dụng câu lệnh SQL xuất ra danh sách gồm Mã số, Họ tên và Tuổi của các sinh viên khoa ‘TOAN’.
+
+SELECT tbl_sinhvien.id, tbl_sinhvien.hotenSV, YEAR(NOW()) - CAST(tbl_sinhvien.namSinh AS int) AS Tuoi 
+FROM tbl_sinhvien JOIN tbl_khoa ON tbl_sinhvien.maKhoa = tbl_khoa.id
+WHERE tbl_khoa.tenKhoa = 'Toan';
