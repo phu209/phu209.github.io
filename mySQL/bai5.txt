@@ -1,0 +1,168 @@
+CREATE DATABASE quanlycuahang;
+
+USE quanlycuahang;
+
+CREATE TABLE tbl_vaitro(
+    id int PRIMARY KEY AUTO_INCREMENT,
+    key1 varchar(50),
+    tenVaiTro varchar(50) NOT NULL,
+    created_at timestamp DEFAULT CURRENT_TIMESTAMP,
+    updated_at timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    deleted_at timestamp NULL
+);
+
+CREATE TABLE tbl_nguoidung (
+    id int PRIMARY KEY AUTO_INCREMENT,
+    ten varchar(50) NOT NULL,
+    sdt varchar(12) NOT NULL,
+    diaChi varchar(255) NOT NULL,
+    username varchar(100) NOT NULL,
+    password varchar(100) NOT NULL,
+    email varchar(100) NOT NULL,
+    ngayVaoLam date NOT NULL,
+    vaitro_id int NOT NULL,
+    CONSTRAINT fk_nguoidung_vaitro FOREIGN KEY (vaitro_id) REFERENCES tbl_vaitro(id),
+    cccd varchar(20) NOT NULL,
+    trangThai varchar(50) NOT NULL,
+    created_at timestamp DEFAULT CURRENT_TIMESTAMP,
+    updated_at timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    deleted_at timestamp NULL
+);
+
+CREATE TABLE tbl_luong(
+    id int PRIMARY KEY AUTO_INCREMENT,
+    nhanvien_id int NOT NULL,
+    CONSTRAINT fk_luong_nguoidung FOREIGN KEY (nhanvien_id) REFERENCES tbl_nguoidung(id),
+    luongCung float NOT NULL,
+    phat float,
+    thue float,
+    soNgayCong float,
+    thang int,
+    trangThai varchar(50) NOT NULL,
+    created_at timestamp DEFAULT CURRENT_TIMESTAMP,
+    updated_at timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    deleted_at timestamp NULL
+);
+
+CREATE TABLE tbl_doanhso(
+    id int PRIMARY KEY AUTO_INCREMENT,
+    nhanvien_id int NOT NULL,
+    CONSTRAINT fk_doanhso_nguoidung FOREIGN KEY (nhanvien_id) REFERENCES tbl_nguoidung(id),
+    soHoaDon int,
+    heSo float,
+    thang int,
+    trangThai varchar(50) NOT NULL,
+    created_at timestamp DEFAULT CURRENT_TIMESTAMP,
+    updated_at timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    deleted_at timestamp NULL
+);
+
+CREATE TABLE tbl_danhmuc(
+    id int PRIMARY KEY AUTO_INCREMENT,
+    tenDanhMuc varchar(255) NOT NULL,
+    hinhAnh varchar(255),
+    moTa varchar(255),
+    trangThai varchar(50) NOT NULL,
+   	created_at timestamp DEFAULT CURRENT_TIMESTAMP,
+    updated_at timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    deleted_at timestamp NULL
+);
+
+CREATE TABLE tbl_nhacungcap(
+    id int PRIMARY KEY AUTO_INCREMENT,
+    tenNCC varchar(255) NOT NULL,
+    hinhAnh varchar(255),
+    moTa varchar(255),
+    trangThai varchar(50) NOT NULL,
+    created_at timestamp DEFAULT CURRENT_TIMESTAMP,
+    updated_at timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    deleted_at timestamp NULL
+);
+
+
+CREATE TABLE tbl_sanpham(
+    id int PRIMARY KEY AUTO_INCREMENT,
+    tenSP varchar(255) NOT NULL,
+    soLuong int,
+    gia float NOT NULL,
+    danhmuc_id int NOT NULL,
+    CONSTRAINT fk_sanpham_danhmuc FOREIGN KEY (danhmuc_id) REFERENCES tbl_danhmuc(id),
+    nhacungcap_id int NOT NULL,
+    CONSTRAINT fk_sanpham_nhacungcap FOREIGN KEY (nhacungcap_id) REFERENCES tbl_nhacungcap(id),
+    ngaySanXuat datetime,
+    moTa varchar(255),
+    hinhAnh varchar(255),
+    chiTiet varchar(255),
+    thongSo varchar(255),
+    ngayNhap datetime,
+    trangThai varchar(50) NOT NULL,
+    created_at timestamp DEFAULT CURRENT_TIMESTAMP,
+    updated_at timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    deleted_at timestamp NULL
+);
+
+CREATE TABLE tbl_giohang(
+    id int PRIMARY KEY AUTO_INCREMENT,
+    khachhang_id int NOT NULL,
+    CONSTRAINT fk_giohang_nguoidung FOREIGN KEY (khachhang_id) REFERENCES tbl_nguoidung(id),
+    trangThai varchar(50) NOT NULL,
+    created_at timestamp DEFAULT CURRENT_TIMESTAMP,
+    updated_at timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    deleted_at timestamp NULL
+);
+
+CREATE TABLE tbl_chitietgiohang(
+    id int PRIMARY KEY AUTO_INCREMENT,
+    giohang_id int NOT NULL,
+    CONSTRAINT fk_chitietgiohang_giohang FOREIGN KEY (giohang_id) REFERENCES tbl_giohang(id),
+    sanpham_id int NOT NULL,
+    CONSTRAINT fk_chitietgiohang_sanpham FOREIGN KEY (sanpham_id) REFERENCES tbl_sanpham(id),
+    soLuong int NOT NULL,
+    created_at timestamp DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE tbl_hoadon(
+    id int PRIMARY KEY AUTO_INCREMENT,
+    khachhang_id int NOT NULL,
+    CONSTRAINT fk_hoadon_nguoidung FOREIGN KEY (khachhang_id) REFERENCES tbl_nguoidung(id),
+    giohang_id int NOT NULL,
+    CONSTRAINT fk_hoadon_giohang FOREIGN KEY (giohang_id) REFERENCES tbl_giohang(id),
+    nhanvien_id int NOT NULL,
+    CONSTRAINT fk_hoadon_nguoidung_2 FOREIGN KEY (nhanvien_id) REFERENCES tbl_nguoidung(id),
+    ngayLapHD datetime NOT NULL,
+    diaChi varchar(255) NOT NULL,
+    sdt varchar(12) NOT NULL,
+    ghiChu varchar(255),
+    trangThai varchar(50) NOT NULL,
+    created_at timestamp DEFAULT CURRENT_TIMESTAMP,
+    updated_at timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    deleted_at timestamp NULL
+);
+
+
+CREATE TABLE tbl_chitiethoadon(
+    id int PRIMARY KEY AUTO_INCREMENT,
+    giohang_id int NOT NULL,
+    CONSTRAINT fk_chitiethoadon_giohang FOREIGN KEY (giohang_id) REFERENCES tbl_giohang(id),
+    sanpham_id int NOT NULL,
+    CONSTRAINT fk_chitiethoadon_sanpham FOREIGN KEY (sanpham_id) REFERENCES tbl_sanpham(id),
+    soLuong int NOT NULL,
+    sonGia float NOT NULL,
+    tenSP varchar(255) NOT NULL,
+    hinhAnh varchar(255),
+    created_at timestamp DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE tbl_danhgia(
+    id int PRIMARY KEY AUTO_INCREMENT,
+    sanpham_id int NOT NULL,
+    CONSTRAINT fk_danhgia_sanpham FOREIGN KEY (sanpham_id) REFERENCES tbl_sanpham(id),
+    diemso float,
+    khachhang_id int NOT NULL,
+    CONSTRAINT fk_danhgia_nguoidung FOREIGN KEY (khachhang_id) REFERENCES tbl_nguoidung(id),
+    comment varchar(255),
+    trangThai varchar(50) NOT NULL,
+    created_at timestamp DEFAULT CURRENT_TIMESTAMP,
+    updated_at timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    deleted_at timestamp NULL
+);
