@@ -6,8 +6,8 @@ CREATE TABLE tbl_vaitro(
     id int PRIMARY KEY AUTO_INCREMENT,
     key1 varchar(50),
     tenVaiTro varchar(50) NOT NULL,
-    created_at timestamp DEFAULT CURRENT_TIMESTAMP,
-    updated_at timestamp DEFAULT CURRENT_TIMESTAMP,
+    created_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
     deleted_at timestamp DEFAULT NULL
 );
 
@@ -24,8 +24,8 @@ CREATE TABLE tbl_nguoidung (
     CONSTRAINT fk_nguoidung_vaitro FOREIGN KEY (vaitro_id) REFERENCES tbl_vaitro(id),
     cccd varchar(20) NOT NULL,
     trangThai varchar(50) NOT NULL,
-    created_at timestamp DEFAULT CURRENT_TIMESTAMP,
-    updated_at timestamp DEFAULT CURRENT_TIMESTAMP,
+    created_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
     deleted_at timestamp DEFAULT NULL
 );
 
@@ -39,8 +39,8 @@ CREATE TABLE tbl_luong(
     soNgayCong float,
     thang int,
     trangThai varchar(50) NOT NULL,
-    created_at timestamp DEFAULT CURRENT_TIMESTAMP,
-    updated_at timestamp DEFAULT CURRENT_TIMESTAMP,
+    created_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
     deleted_at timestamp DEFAULT NULL
 );
 
@@ -52,8 +52,8 @@ CREATE TABLE tbl_doanhso(
     heSo float,
     thang int,
     trangThai varchar(50) NOT NULL,
-    created_at timestamp DEFAULT CURRENT_TIMESTAMP,
-    updated_at timestamp DEFAULT CURRENT_TIMESTAMP,
+    created_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
     deleted_at timestamp DEFAULT NULL
 );
 
@@ -63,8 +63,8 @@ CREATE TABLE tbl_danhmuc(
     hinhAnh varchar(255),
     moTa varchar(255),
     trangThai varchar(50) NOT NULL,
-   	created_at timestamp DEFAULT CURRENT_TIMESTAMP,
-    updated_at timestamp DEFAULT CURRENT_TIMESTAMP,
+    created_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
     deleted_at timestamp DEFAULT NULL
 );
 
@@ -74,8 +74,8 @@ CREATE TABLE tbl_nhacungcap(
     hinhAnh varchar(255),
     moTa varchar(255),
     trangThai varchar(50) NOT NULL,
-    created_at timestamp DEFAULT CURRENT_TIMESTAMP,
-    updated_at timestamp DEFAULT CURRENT_TIMESTAMP,
+    created_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
     deleted_at timestamp DEFAULT NULL
 );
 
@@ -96,8 +96,8 @@ CREATE TABLE tbl_sanpham(
     thongSo varchar(255),
     ngayNhap datetime,
     trangThai varchar(50) NOT NULL,
-    created_at timestamp DEFAULT CURRENT_TIMESTAMP,
-    updated_at timestamp DEFAULT CURRENT_TIMESTAMP ,
+    created_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ,
     deleted_at timestamp DEFAULT NULL
 );
 
@@ -106,8 +106,8 @@ CREATE TABLE tbl_giohang(
     khachhang_id int NOT NULL,
     CONSTRAINT fk_giohang_nguoidung FOREIGN KEY (khachhang_id) REFERENCES tbl_nguoidung(id),
     trangThai varchar(50) NOT NULL,
-    created_at timestamp DEFAULT CURRENT_TIMESTAMP,
-    updated_at timestamp DEFAULT CURRENT_TIMESTAMP ,
+    created_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ,
     deleted_at timestamp DEFAULT NULL
 );
 
@@ -118,7 +118,7 @@ CREATE TABLE tbl_chitietgiohang(
     sanpham_id int NOT NULL,
     CONSTRAINT fk_chitietgiohang_sanpham FOREIGN KEY (sanpham_id) REFERENCES tbl_sanpham(id),
     soLuong int NOT NULL,
-    created_at timestamp DEFAULT CURRENT_TIMESTAMP
+    created_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE tbl_hoadon(
@@ -134,8 +134,8 @@ CREATE TABLE tbl_hoadon(
     sdt varchar(12) NOT NULL,
     ghiChu varchar(255),
     trangThai varchar(50) NOT NULL,
-    created_at timestamp DEFAULT CURRENT_TIMESTAMP,
-    updated_at timestamp DEFAULT CURRENT_TIMESTAMP ,
+    created_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ,
     deleted_at timestamp DEFAULT NULL
 );
 
@@ -150,7 +150,7 @@ CREATE TABLE tbl_chitiethoadon(
     sonGia float NOT NULL,
     tenSP varchar(255) NOT NULL,
     hinhAnh varchar(255),
-    created_at timestamp DEFAULT CURRENT_TIMESTAMP
+    created_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE tbl_danhgia(
@@ -162,7 +162,7 @@ CREATE TABLE tbl_danhgia(
     CONSTRAINT fk_danhgia_nguoidung FOREIGN KEY (khachhang_id) REFERENCES tbl_nguoidung(id),
     comment varchar(255),
     trangThai varchar(50) NOT NULL,
-    created_at timestamp DEFAULT CURRENT_TIMESTAMP,
-    updated_at timestamp DEFAULT CURRENT_TIMESTAMP,
+    created_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
     deleted_at timestamp DEFAULT NULL
 );
