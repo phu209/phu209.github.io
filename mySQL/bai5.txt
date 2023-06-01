@@ -7,8 +7,8 @@ CREATE TABLE tbl_vaitro(
     key1 varchar(50),
     tenVaiTro varchar(50) NOT NULL,
     created_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    updated_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    deleted_at timestamp DEFAULT NULL
+    updated_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    deleted_at timestamp NULL
 );
 
 CREATE TABLE tbl_nguoidung (
@@ -25,8 +25,8 @@ CREATE TABLE tbl_nguoidung (
     cccd varchar(20) NOT NULL,
     trangThai varchar(50) NOT NULL,
     created_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    updated_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    deleted_at timestamp DEFAULT NULL
+    updated_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    deleted_at timestamp NULL
 );
 
 CREATE TABLE tbl_luong(
@@ -40,8 +40,8 @@ CREATE TABLE tbl_luong(
     thang int,
     trangThai varchar(50) NOT NULL,
     created_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    updated_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    deleted_at timestamp DEFAULT NULL
+    updated_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    deleted_at timestamp NULL
 );
 
 CREATE TABLE tbl_doanhso(
@@ -53,8 +53,8 @@ CREATE TABLE tbl_doanhso(
     thang int,
     trangThai varchar(50) NOT NULL,
     created_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    updated_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    deleted_at timestamp DEFAULT NULL
+    updated_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    deleted_at timestamp NULL
 );
 
 CREATE TABLE tbl_danhmuc(
@@ -64,8 +64,8 @@ CREATE TABLE tbl_danhmuc(
     moTa varchar(255),
     trangThai varchar(50) NOT NULL,
     created_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    updated_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    deleted_at timestamp DEFAULT NULL
+    updated_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    deleted_at timestamp NULL
 );
 
 CREATE TABLE tbl_nhacungcap(
@@ -74,9 +74,9 @@ CREATE TABLE tbl_nhacungcap(
     hinhAnh varchar(255),
     moTa varchar(255),
     trangThai varchar(50) NOT NULL,
-    created_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    updated_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    deleted_at timestamp DEFAULT NULL
+   created_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    deleted_at timestamp NULL
 );
 
 
@@ -97,8 +97,8 @@ CREATE TABLE tbl_sanpham(
     ngayNhap datetime,
     trangThai varchar(50) NOT NULL,
     created_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    updated_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ,
-    deleted_at timestamp DEFAULT NULL
+    updated_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    deleted_at timestamp NULL
 );
 
 CREATE TABLE tbl_giohang(
@@ -107,8 +107,8 @@ CREATE TABLE tbl_giohang(
     CONSTRAINT fk_giohang_nguoidung FOREIGN KEY (khachhang_id) REFERENCES tbl_nguoidung(id),
     trangThai varchar(50) NOT NULL,
     created_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    updated_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ,
-    deleted_at timestamp DEFAULT NULL
+    updated_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    deleted_at timestamp NULL
 );
 
 CREATE TABLE tbl_chitietgiohang(
@@ -135,8 +135,8 @@ CREATE TABLE tbl_hoadon(
     ghiChu varchar(255),
     trangThai varchar(50) NOT NULL,
     created_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    updated_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ,
-    deleted_at timestamp DEFAULT NULL
+    updated_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    deleted_at timestamp NULL
 );
 
 
@@ -163,6 +163,6 @@ CREATE TABLE tbl_danhgia(
     comment varchar(255),
     trangThai varchar(50) NOT NULL,
     created_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    updated_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    deleted_at timestamp DEFAULT NULL
+    updated_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    deleted_at timestamp NULL
 );
