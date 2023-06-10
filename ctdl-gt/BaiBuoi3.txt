@@ -7,3 +7,6 @@ https://leetcode.com/problems/height-checker/submissions/967802274/
 2418. Sort the People
 https://leetcode.com/problems/sort-the-people/submissions/967802844/
 
+1636. Sort Array by Increasing Frequency
+
+
