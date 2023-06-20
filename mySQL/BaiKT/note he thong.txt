@@ -1,0 +1,211 @@
+
+Table roles {
+  id integer [primary key]
+  key varchar(20)
+  role varchar(50)
+  created_at timestamp
+  updated_at timestamp
+  deleted_at timestamp
+}
+Phân chia thành học viên, admin, giáo viên
+
+
+
+Table status {
+  id integer [primary key]
+  key varchar(20)
+  value varchar(50)
+  created_at timestamp
+  updated_at timestamp
+  deleted_at timestamp
+}
+Chia ra các trạng thái của các bảng
+
+
+
+Table users {
+  id integer [primary key]
+  name varchar(50) 
+  dateBirth date
+  phoneNumber varchar(12) unique
+  address varchar(255)
+  email varchar(50) unique
+  username varchar(50) unique
+  password varchar(50)
+  joinDate date
+  role_id integer
+  status_id integer
+  created_at timestamp
+  updated_at timestamp
+  deleted_at timestamp
+}
+Lưu trữ thông tin của các users
+
+
+
+Table category {
+  id integer [primary key]
+  name varchar(50)
+  descrition text
+  status_id integer
+  created_at timestamp
+  updated_at timestamp
+  deleted_at timestamp
+}
+Bảng phân loại các khóa học phù hợp với từng người: Mới bắt đầu, sv CNTT,...
+
+
+Table courses {
+  id integer [primary key]
+  name varchar(50)
+  description text
+  price double
+  term  varchar(100)
+  category_id integer
+  form_id integer
+  status_id integer
+  created_at timestamp
+  updated_at timestamp
+  deleted_at timestamp
+}
+Chứa thông tin của các khóa học
+Bảng các khóa học
+
+
+Table forms {
+  id integer [primary key]
+  name varchar(50)
+  status_id integer
+  created_at timestamp
+  updated_at timestamp
+  deleted_at timestamp
+}
+Chia ra các hình thức học của khóa học: lâu dài, ngắn hạn
+
+
+Table classes {
+  id integer [primary key]
+  name varchar(50)
+  teacher_id integer
+  course_id integer
+  startDate date
+  endDate date
+  status_id integer
+  created_at timestamp
+  updated_at timestamp
+  deleted_at timestamp
+}
+Chứa dữ liệu về các lớp học
+
+
+Table classStudent {
+  id integer [primary key]
+  admin_id integer
+  student_id integer
+  class_id integer
+  status_id integer
+  created_at timestamp
+  updated_at timestamp
+  deleted_at timestamp
+}
+kết hợp các lớp học và các sinh viên đăng ký vào các lớp đó
+
+
+Table weekday {
+  id integer [primary key]
+  name varchar(100)
+  created_at timestamp
+  updated_at timestamp
+  deleted_at timestamp
+}
+tuần lưu trữ các ngày trong tuần mà trường mở cửa
+
+
+Table classWeekday {
+  id integer [primary key]
+  class_id integer
+  weekday_id integer
+  hours varchar(50)
+  status_id integer
+  created_at timestamp
+  updated_at timestamp
+  deleted_at timestamp
+}
+dữ liệu trong bảng lớp và các ngày trong tuần, thông tin các lớp học trong tuần
+
+
+Table lessons {
+  id integer [primary key]
+  name varchar(255)
+  content text
+  teacher_id integer
+  status_id int
+  created_at timestamp
+  updated_at timestamp
+  deleted_at timestamp
+}
+Lưu trữ bài giảng của giáo viên
+
+
+Table classLesson {
+  id integer [primary key]
+  class_id integer
+  lesson_id integer
+  status_id int
+  created_at timestamp
+  updated_at timestamp
+  deleted_at timestamp
+}
+Lữu trữ 1 lớp có thể có nhiều bài giảng 
+
+
+Table attendance {
+  id integer [primary key]
+  teacher_id interger
+  classStudent_id integer
+  attendanceDate date
+  status_id int
+  created_at timestamp
+  updated_at timestamp
+  deleted_at timestamp
+}
+Thông tin điểm danh của giáo viên với học viên trong lớp
+
+
+Table grades {
+  id integer [primary key]
+  teacher_id interger
+  classStudent_id integer
+  grade float
+  status_id int
+  created_at timestamp
+  updated_at timestamp
+  deleted_at timestamp
+}
+Điểm của học viên của lớp học
+
+
+Table paymentMethod {
+  id integer [primary key]
+  name varchar(100)
+  created_at timestamp
+  updated_at timestamp
+  deleted_at timestamp
+}
+Các phương thức trả tiền lớp học: tiền mặt, Chuyển khoản
+
+
+Table payment {
+  id integer [primary key]
+  paymentDate date
+  admin_id interger
+  student_id integer
+  class_id integer
+  amount double
+  paymentMethod_id integer
+  status_id int
+  created_at timestamp
+  updated_at timestamp
+  deleted_at timestamp
+}
+Lưu trữ thông tin thanh toán của học viên với các khóa học
