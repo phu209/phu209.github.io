@@ -1,0 +1,15 @@
+704. Binary Search
+https://leetcode.com/problems/binary-search/submissions/973337785/
+
+35. Search Insert Position
+https://leetcode.com/problems/search-insert-position/submissions/973318588/
+
+374. Guess Number Higher or Lower
+https://leetcode.com/problems/guess-number-higher-or-lower/submissions/976446254/
+
+268. Missing Number
+https://leetcode.com/problems/missing-number/submissions/976454640/
+
+1385. Find the Distance Value Between Two Arrays
+https://leetcode.com/problems/find-the-distance-value-between-two-arrays/submissions/976459113/
+
