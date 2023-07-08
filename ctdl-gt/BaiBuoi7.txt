@@ -1,0 +1,17 @@
+509. Fibonacci Number
+https://leetcode.com/problems/fibonacci-number/submissions/988988504/
+
+709. To Lower Case
+https://leetcode.com/problems/to-lower-case/submissions/988991880/
+
+766. Toeplitz Matrix
+https://leetcode.com/problems/toeplitz-matrix/submissions/989015051/
+
+88. Merge Sorted Array
+https://leetcode.com/problems/merge-sorted-array/submissions/988997668/
+
+977. Squares of a Sorted Array
+https://leetcode.com/problems/squares-of-a-sorted-array/submissions/989020720/
+
+1346. Check If N and Its Double Exist
+https://leetcode.com/problems/check-if-n-and-its-double-exist/submissions/989033539/
