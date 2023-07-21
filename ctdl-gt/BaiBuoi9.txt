@@ -1,0 +1,9 @@
+225. Implement Stack using Queues 
+https://leetcode.com/problems/implement-stack-using-queues/submissions/1000313586/
+232. Implement Queue using Stacks
+https://leetcode.com/problems/implement-queue-using-stacks/submissions/1000313378/
+933. Number of Recent Calls
+https://leetcode.com/problems/number-of-recent-calls/submissions/1000331025/
+20. Valid Parentheses 
+https://leetcode.com/problems/valid-parentheses/submissions/1000352792/
+622. Design Circular Queue 
