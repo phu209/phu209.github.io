@@ -6,4 +6,5 @@ https://leetcode.com/problems/implement-queue-using-stacks/submissions/100031337
 https://leetcode.com/problems/number-of-recent-calls/submissions/1000331025/
 20. Valid Parentheses 
 https://leetcode.com/problems/valid-parentheses/submissions/1000352792/
-622. Design Circular Queue 
+622. Design Circular Queue
+https://leetcode.com/problems/design-circular-queue/submissions/1000622037/ 
