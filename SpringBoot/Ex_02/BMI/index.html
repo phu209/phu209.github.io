@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BMI Calculator</title>
+</head>
+<body>
+    <h1>BMI Calculator</h1>
+    
+    <label for="height">Height (m):</label>
+    <input type="number" id="height" step="0.01" placeholder="Enter height" required>
+    
+    <label for="weight">Weight (kg):</label>
+    <input type="number" id="weight" step="0.01" placeholder="Enter weight" required>
+    
+    <button id="calculateGet">Calculate BMI (GET)</button>
+    <button id="calculatePost">Calculate BMI (POST)</button>
+    
+    <div id="result"></div>
+
+    <script>
+        const resultDiv = document.getElementById('result');
+        const heightInput = document.getElementById('height');
+        const weightInput = document.getElementById('weight');
+        const calculateGetBtn = document.getElementById('calculateGet');
+        const calculatePostBtn = document.getElementById('calculatePost');
+        
+        calculateGetBtn.addEventListener('click', async () => {
+            const height = parseFloat(heightInput.value);
+            const weight = parseFloat(weightInput.value);
+            
+            if (isNaN(height) || isNaN(weight)) {
+                resultDiv.innerHTML = 'Nhập các giá trị hợp lệ cho chiều cao và cân nặng.';
+                return;
+            }
+            
+            const response = await fetch(`http://localhost:8080/bmi?height=${height}&weight=${weight}`);
+            const data = await response.text();
+            resultDiv.innerHTML = data;
+           
+        });
+
+        calculatePostBtn.addEventListener('click', async () => {
+            const height = parseFloat(heightInput.value);
+            const weight = parseFloat(weightInput.value);
+            
+            if (isNaN(height) || isNaN(weight)) {
+                resultDiv.innerHTML = 'Nhập các giá trị hợp lệ cho chiều cao và cân nặng.';
+                return;
+            }
+            
+            const requestData = { height, weight };
+
+            const response = await fetch('http://localhost:8080/bmi', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                 body: JSON.stringify(requestData)
+            });
+                const data = await response.text();
+                resultDiv.innerHTML = data;
+        });
+    </script>
+</body>
+</html>

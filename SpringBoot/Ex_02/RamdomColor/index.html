@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Random Color Generator</title>
+    <style>
+        body {
+            text-align: center;
+            background-color: #f0f0f0;
+        }
+        button {
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Random Color Generator</h1>
+    <button id="randomColorNameBtn">Random Color Name</button>
+    <button id="randomHexColorBtn">Random HEX Color</button>
+    <button id="randomRgbColorBtn">Random RGB Color</button>
+
+    <script>
+        const changeBackgroundColor = (color) => {
+            document.body.style.backgroundColor = color;
+        };
+
+        const getRandomColor = (type) => {
+            fetch(`http://localhost:8080/random-color?type=${type}`)
+                .then(response => response.text())
+                .then(color => {
+                    changeBackgroundColor(color);
+                })
+                .catch(error => {
+                    console.error(error);
+                    alert('Lỗi!!!');
+                });
+        };
+
+        document.getElementById('randomColorNameBtn').addEventListener('click', () => {
+            getRandomColor(1);
+        });
+
+        document.getElementById('randomHexColorBtn').addEventListener('click', () => {
+            getRandomColor(2);
+        });
+
+        document.getElementById('randomRgbColorBtn').addEventListener('click', () => {
+            getRandomColor(3);
+        });
+    </script>
+</body>
+</html>
