@@ -1,0 +1,38 @@
+package vn.techmaster.demo.controller;
+
+import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import vn.techmaster.demo.database.UserDatabase;
+import vn.techmaster.demo.exception.InvalidLoginException;
+import vn.techmaster.demo.model.LoginRequest;
+import vn.techmaster.demo.model.User;
+import vn.techmaster.demo.model.UserInfo;
+
+@RestController
+public class UserController {
+
+
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@Valid @RequestBody LoginRequest request) {
+        User user = UserDatabase.userList.stream()
+                .filter(u -> u.getUsername().equals(request.getUsername()) && u.getPassword().equals(request.getPassword()))
+                .findFirst()
+                .orElse(null);
+
+        if (user != null) {
+            UserInfo userInfo = new UserInfo(user.getUsername(), user.getEmail(), user.getAvatar());
+            return ResponseEntity.ok(userInfo);
+        } else {
+            throw new InvalidLoginException("Username hoac password khong dung");
+        }
+    }
+
+    @ExceptionHandler(InvalidLoginException.class)
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    public ResponseEntity<String> handleInvalidLoginException(InvalidLoginException ex) {
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(ex.getMessage());
+    }
+}
+
